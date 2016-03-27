@@ -1,0 +1,10 @@
+{% for artist in craft.entries.find({section: 'Artists', limit: '4'}) %}
+  {% for image in artist.artistImage %}
+    <li><img src="{{ image.getUrl('artistThumbnail') }}" /></li>
+  {% endfor %}
+  <li><a href="{{ artist.url }}">{{ artist.title }}</a> {{ artist.shortBio }} {{ artist.longBio }}</li>
+{% endfor %}
+
+{% for artist in craft.entries.find({section: 'Artists', limit: '4', offset: '4'}) %}
+  <li><a href="{{ artist.url }}">{{ artist.title }}</a> {{ artist.shortBio }} {{ artist.longBio }}</li>
+{% endfor %}

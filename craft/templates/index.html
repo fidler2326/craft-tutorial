@@ -1,0 +1,23 @@
+{% extends "_layout" %}
+
+{% block main %}
+
+  {{ siteName }}
+
+  <ul>
+    {% for slide in entry.homepageSlideshow %}
+      <li><img src="{{ slide.url }}" width="500" height="auto"></li>
+      {{ slide.caption }}
+    {% endfor %}
+  </ul>
+
+  {{ entry.title }}
+  {{ entry.body }}
+
+  <h1>Artists</h1>
+
+  {% include "includes/_artistlist" %}
+
+  {% include "includes/_sidenav" %}
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "_layout" %}
+
+
+
+{% block main %}
+
+  {{ entry.title }}
+
+  <div style="clear"></div>
+
+  {% for block in entry.recipeContents  %}
+
+    {% switch block.type %}
+
+      {% case 'recipeImage' %}
+        {% set image = block.image.first() %}
+        <img src="{{ image.url }}" width="400" />
+        {% if block.imageCaption %}
+          <p>{{ block.imageCaption }}</p>
+        {% endif %}
+
+
+      {% case 'recipeCopy' %}
+        {{ block.bodyContent }}
+
+
+      {% case 'recipeSteps' %}
+        {{ block.stepsTitle }}
+        {% for row in block.stepsSteps %}
+          {{ row.step }}
+        {% endfor %}
+
+
+      {% case 'recipeIngredients' %}
+        {% for row in block.ingredients %}
+          {{ row.amount }}
+          {{ row.ingredient }}
+        {% endfor %}
+
+    {% endswitch %}
+
+  {% endfor %}
+
+{% endblock %}

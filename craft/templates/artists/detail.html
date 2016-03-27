@@ -1,0 +1,27 @@
+{% extends "_layout" %}
+
+
+
+{% block main %}
+
+  {{ siteName }}
+
+  <div style="clear"></div>
+
+  {% for image in entry.artistImage %}
+    <img src="{{ image.getUrl('artistBio') }}" />
+  {% endfor %}
+
+  {{ entry.title }}
+  {{ entry.shortBio }}
+  {{ entry.longBio }}
+
+  {% for album in entry.discography %}
+    <li>
+      {{ album.albumTitle }}
+      {{ album.albumReleaseYear }}
+      {{ album.albumItunesUrl }}
+    </li>
+  {% endfor %}
+
+{% endblock %}
